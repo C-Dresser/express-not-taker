@@ -18,6 +18,21 @@ app.get('/api/notes', async (req, res) => {
     }
 });
 
+//POST route
+app.post('/api/notes', async (req, res) => {
+    try {
+        const data = await fs.readFile('db.json', 'utf8');
+        const notes = JSON.parse(data);
+        const newNote = req.body;
+        newNote.id = Date.now();
+        notes.push(newNote);
+        await fs.writeFile('db.json', JSON.stringify(notes, null, 2));
+        res.json(newNote);
+    }   catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
 
 
 
