@@ -34,6 +34,22 @@ app.post('/api/notes', async (req, res) => {
     }
 });
 
+//DELTE route
+app.delete('/api/notes/:id', async (req, res) => {
+    try {
+        const data = await fs.readFile('db.json', 'utf8');
+        let notes = JSON.parse(data);
+        const noteId = parseInt(req.params.id);
+
+        notes = notes.filter((note) => note.id !== noteId);
+
+        await fs.writeFile('db.json', JSON.stringify(notes, null, 2));
+        res.send('Note deleted successfully');
+    }   catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
 
 
 
