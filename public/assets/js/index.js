@@ -5,7 +5,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-if (window.location.pathname === '/notes.html') {
+if (window.location.pathname === '/notes') {
   noteForm = document.querySelector('.note-form');
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
@@ -36,7 +36,7 @@ const getNotes = () =>
     }
   });
 
-const saveNote = (note) =>
+  const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
     headers: {
