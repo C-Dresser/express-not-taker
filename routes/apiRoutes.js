@@ -9,23 +9,15 @@ router.get('/api/notes', async (req, res) => {
   });
 
 router.post('/api/notes', (req, res) => {
-    // const userInput = {
-    //     title: req.body.title,
-    //     text: req.body.text,
-    //   };
-      req.body.id = uuidv4()
-    // console.log(userInput);
-    console.log(dbLocation);
-    console.log(req.body);
+
+    req.body.id = uuidv4()
     dbLocation.push(req.body);
+
     fs.writeFile('db/db.json', JSON.stringify(dbLocation), error => {
       if (error) {
         res.sendStatus(404)
     } else { res.sendStatus(200) }
     });
-   // res.json(dbLocation);
 });
-
-
 
   module.exports = router;
