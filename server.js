@@ -12,7 +12,6 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended:false }));
 app.use(htmlRoutes);
 app.use(apiRoutes);
-
 app.listen(PORT, () => {
   console.log(`Running at http://localhost:${PORT}`);
 });

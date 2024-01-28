@@ -5,10 +5,8 @@ body {
   padding: 0;
 }
 
-/*corrected display property*/
-
 .save-note, .new-note, .clear-btn {
-  display: inline-block;
+  display: none;
 }
 
 .icons {
